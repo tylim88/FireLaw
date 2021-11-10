@@ -1,6 +1,6 @@
 {
 	"name": "ozai",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "nth for now",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -22,13 +22,7 @@
 		"url": "https://github.com/tylim88/ozai/issues"
 	},
 	"homepage": "https://github.com/tylim88/ozai#readme",
-	"keywords": [
-		"object",
-		"swap",
-		"key",
-		"value",
-		"typescript"
-	],
+	"keywords": [],
 	"devDependencies": {
 		"@babel/cli": "^7.4.3",
 		"@babel/core": "^7.4.3",
