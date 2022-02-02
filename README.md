@@ -1,3 +1,3 @@
-# ozai
+# FireRule
 
 nth for now
