@@ -1,16 +1,19 @@
 {
 	"name": "ozai",
-	"version": "0.0.2",
-	"description": "nth for now",
-	"main": "dist/index.js",
-	"types": "dist/index.d.ts",
+	"version": "0.0.3",
+	"description": "🔥 Transpiler that allow you to write type safe and scalable Firestore Rules in Typescript",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
 	"scripts": {
 		"reinstall": "rm -rf node_modules/ && rm -rf package-lock.json && npm i",
-		"lint": "eslint --ext .ts",
-		"lint-fix": "npm run lint --fix",
-		"build": "rm -rf dist && rm -rf types && babel src --out-dir dist --extensions \".ts\" && tsc -p tsconfig.json",
+		"tsc": "tsc -p tsconfig.json",
+		"lint": "eslint . --ext .ts",
+		"prettier": "npx pretty-quick --staged",
+		"build": "rm -rf dist && rm -rf types && babel src --out-dir dist --extensions \".ts\" && npm run tsc",
 		"test": "jest",
-		"pub": "npm run build && npm publish"
+		"pub": "npm run build && npm publish",
+		"pre-commit": "npm run tsc && npm run lint --fix && npm run prettier",
+		"prepare": "husky install"
 	},
 	"repository": {
 		"type": "git",
@@ -22,7 +25,12 @@
 		"url": "https://github.com/tylim88/ozai/issues"
 	},
 	"homepage": "https://github.com/tylim88/ozai#readme",
-	"keywords": [],
+	"keywords": [
+		"firebase",
+		"firestore",
+		"transpiler",
+		"typescript"
+	],
 	"devDependencies": {
 		"@babel/cli": "^7.4.3",
 		"@babel/core": "^7.4.3",
@@ -42,24 +50,17 @@
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-import": "^2.25.2",
 		"eslint-plugin-prettier": "^4.0.0",
-		"husky": "^4.2.5",
+		"firebase-admin": "^10.0.0",
+		"firelord": "^0.18.0-beta.1",
+		"husky": "^7.0.0",
 		"jest": "^27.2.5",
 		"jsdoc": "^3.6.5",
-		"lint-staged": "^10.2.11",
 		"prettier": "^2.4.1",
+		"ts-essentials": "^9.0.0",
 		"ts-jest": "^27.0.5",
-		"tsd": "^0.18.0",
 		"typescript": "^4.4.4"
 	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "lint-staged"
-		}
-	},
-	"lint-staged": {
-		"*.{ts}": [
-			"npm run lint --fix",
-			"prettier --write"
-		]
+	"dependencies": {
+		"esprima": "^4.0.1"
 	}
 }
