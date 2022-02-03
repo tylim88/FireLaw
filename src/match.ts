@@ -1,10 +1,10 @@
-import { allow } from './allow'
-import { ArrayOf } from './utils'
+import { Allow, Operations } from 'allow'
+import { ArrayOf } from 'utils'
 import { FirelordUtils } from 'firelord'
-import { Request } from './request'
-import { Resource } from './resource'
+import { Request } from 'request'
+import { Resource } from 'resource'
 
-type MatchPaths<
+export type MatchPaths<
 	T extends FirelordUtils.MetaType['ancestors'],
 	Y extends unknown[] = []
 > = T extends [infer X, ...infer Rest]
@@ -18,8 +18,7 @@ type MatchPaths<
 				: never}`
 		: never
 	: ''
-
-type MatchParams<
+export type MatchParams<
 	T extends string,
 	U extends string = never
 > = T extends `${string}/{${infer P}_${infer Q}}/${infer Rest}`
@@ -30,17 +29,45 @@ type MatchParams<
 	? `${P}_${Q}` | U
 	: U
 
-export const match =
-	<T extends FirelordUtils.MetaType>(
-		recursiveWildcard: 'none' | '**' | '***' = 'none'
-	) =>
-	<U extends MatchPaths<T['ancestors']>>(
-		path: U,
+export type NoEmptyDocId<T extends string> =
+	T extends `${string}/{${infer P}_${infer Q}}/${infer Rest}`
+		? P extends ''
+			? 'Error: Empty DocId'
+			: NoEmptyDocId<Rest>
+		: T extends `${string}/${infer P}_${number}/${infer Rest}`
+		? P extends ''
+			? 'Error: Empty DocId'
+			: NoEmptyDocId<Rest>
+		: T extends `${string}/{${infer P}_${infer Q}}`
+		? P extends ''
+			? 'Error: Empty DocId'
+			: true
+		: T extends `${string}/${infer P}_${infer Q}`
+		? P extends ''
+			? 'Error: Empty DocId'
+			: true
+		: 'Error: Incorrect Type'
+/* eslint-disable @typescript-eslint/no-unused-vars */
+export const matchCreator = <T extends FirelordUtils.MetaType>() => {
+	const match = <
+		U extends MatchPaths<T['ancestors']>,
+		//eslint-disable-next-line @typescript-eslint/no-explicit-any
+		V extends Allow<Operations[]> // maximum 7 operations
+	>(
+		path: NoEmptyDocId<U> extends true
+			? U
+			: `${NoEmptyDocId<U>}, the correct type is: ${MatchPaths<
+					T['ancestors']
+			  >}`,
+		recursiveWildcard: 'none' | '**' | '***',
 		callback: (
 			request: Request<T['write']>,
 			resource: Resource<T['read']>,
 			params: { [index in MatchParams<U>]: index }
-		) => ReturnType<typeof allow>
+		) => V
 	) => {
 		return
 	}
+	return { match }
+}
+/* eslint-enable @typescript-eslint/no-unused-vars */

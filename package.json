@@ -1,7 +1,7 @@
 {
-	"name": "ozai",
-	"version": "0.0.3",
-	"description": "🔥 Transpiler that allow you to write type safe and scalable Firestore Rules in Typescript",
+	"name": "firelaw",
+	"version": "0.0.0",
+	"description": "🔥 Write truly safe and scalable Firestore Rules in Typescript",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"scripts": {
@@ -17,14 +17,14 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/tylim88/ozai.git"
+		"url": "git+https://github.com/tylim88/firelaw.git"
 	},
 	"author": "",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/tylim88/ozai/issues"
+		"url": "https://github.com/tylim88/firelaw/issues"
 	},
-	"homepage": "https://github.com/tylim88/ozai#readme",
+	"homepage": "https://github.com/tylim88/firelaw#readme",
 	"keywords": [
 		"firebase",
 		"firestore",

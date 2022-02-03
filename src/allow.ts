@@ -1,4 +1,5 @@
-import { IsUnique } from './utils'
+import { IsUnique } from 'utils'
+
 export type Operations =
 	| 'read'
 	| 'list'
@@ -8,16 +9,31 @@ export type Operations =
 	| 'update'
 	| 'delete'
 
-export const allow = <
-	T extends [...operations: Operations[], condition: boolean]
->(
-	...args: IsUnique<T> extends []
-		? T extends [boolean]
+export type Allow<U extends Operations[] = []> = {
+	allow: <T extends Operations[]>(
+		condition: boolean,
+		...operations: IsUnique<[...T, ...U]> extends []
+			? T extends []
+				? 'missing operation arguments'
+				: T
+			: IsUnique<T>
+	) => Allow<[...T, ...U]>
+}
+/* eslint-disable @typescript-eslint/no-unused-vars */
+export const allow = <T extends Operations[]>(
+	condition: boolean,
+	...operations: IsUnique<T> extends []
+		? T extends []
 			? 'missing operation arguments'
 			: T
 		: IsUnique<T>
-) => {
-	return args
+): Allow<T> => {
+	return { allow } as Allow<T>
 }
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
-allow('read', 'write', true)
+allow(true, 'update')
+
+export const allowGroup = (...callback: typeof allow[]) => {
+	return
+}
