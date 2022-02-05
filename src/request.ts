@@ -1,5 +1,5 @@
 import { FirelordUtils } from 'firelord'
-import { Resource } from 'resource'
+import { Resource } from './resource'
 
 export type Request<T extends FirelordUtils.MetaType['write']> = {
 	auth?: {

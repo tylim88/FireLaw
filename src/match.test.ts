@@ -1,7 +1,7 @@
 import 'jest'
-import { matchCreator } from 'match'
+import { matchCreator } from './match'
 import { FirelordUtils } from 'firelord'
-import { allow } from 'allow'
+import { allow } from './allow'
 
 export type parent = FirelordUtils.ReadWriteCreator<
 	{ test: boolean },

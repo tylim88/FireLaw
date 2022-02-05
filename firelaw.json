@@ -1,0 +1,4 @@
+{
+	"include": ["src/transpiler/dummyDoc/efg.txt"],
+	"dist": "firestore.rules"
+}

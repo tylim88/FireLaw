@@ -1,30 +1,30 @@
 import 'jest'
-import { getCreator } from 'index'
-import { parent, child, grandChild } from 'match.test'
+import { creator } from './index'
+import { parent, grandChild } from './match.test'
 
 describe('test path type', () => {
 	it('test wildcard path', () => {
-		expect(() => getCreator<parent>().get('/colName/abc')).not.toThrow()
+		expect(() => creator<parent>().get('/colName/abc')).not.toThrow()
 		// @ts-expect-error
-		expect(() => getCreator<parent>().get('/colName/abc/')).not.toThrow()
+		expect(() => creator<parent>().get('/colName/abc/')).not.toThrow()
 		// @ts-expect-error
-		expect(() => getCreator<parent>().get('/colName/abc/a')).not.toThrow()
+		expect(() => creator<parent>().get('/colName/abc/a')).not.toThrow()
 	})
 	it('test literal path', () => {
 		expect(() =>
-			getCreator<grandChild>().get('/colName/abc/colName1/efg/colName2/name1')
+			creator<grandChild>().get('/colName/abc/colName1/efg/colName2/name1')
 		).not.toThrow()
 		expect(() =>
 			// @ts-expect-error
-			getCreator<grandChild>().get('/colName/abc/colName1/efg/colName2/unknown')
+			creator<grandChild>().get('/colName/abc/colName1/efg/colName2/unknown')
 		).not.toThrow()
 		expect(() =>
 			// @ts-expect-error
-			getCreator<grandChild>().get('/colName/abc/colName1/efg/colName2/')
+			creator<grandChild>().get('/colName/abc/colName1/efg/colName2/')
 		).not.toThrow()
 		expect(() =>
 			// @ts-expect-error
-			getCreator<grandChild>().get('/colName/abc')
+			creator<grandChild>().get('/colName/abc')
 		).not.toThrow()
 	})
 })

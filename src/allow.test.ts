@@ -1,5 +1,5 @@
 import 'jest'
-import { allow } from 'allow'
+import { allow } from './allow'
 
 describe('test allow arguments types', () => {
 	it('unique operations', () => {

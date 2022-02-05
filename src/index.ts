@@ -1,6 +1,6 @@
-import { ArrayOf } from 'utils'
+import { ArrayOf } from './utils'
 import { FirelordUtils } from 'firelord'
-export { matchCreator } from 'match'
+import { matchCreator } from './match'
 
 export type NoEmptyDocId<T extends string> =
 	T extends `/${string}/${infer P}/${infer Rest}`
@@ -24,7 +24,7 @@ type GetPath<T extends FirelordUtils.MetaType['ancestors']> = T extends [
 		: never
 	: ''
 /* eslint-disable @typescript-eslint/no-unused-vars */
-export const existsCreator = <T extends FirelordUtils.MetaType>() => {
+export const creator = <T extends FirelordUtils.MetaType>() => {
 	const exists = <U extends GetPath<T['ancestors']>>(
 		path: NoEmptyDocId<U> extends true
 			? U
@@ -32,10 +32,6 @@ export const existsCreator = <T extends FirelordUtils.MetaType>() => {
 	): boolean => {
 		return true
 	}
-	return { exists }
-}
-
-export const getCreator = <T extends FirelordUtils.MetaType>() => {
 	const get = <U extends GetPath<T['ancestors']>>(
 		path: NoEmptyDocId<U> extends true
 			? U
@@ -43,10 +39,6 @@ export const getCreator = <T extends FirelordUtils.MetaType>() => {
 	): T['read'] => {
 		return {} as T['read']
 	}
-	return { get }
-}
-
-export const getAfterCreator = <T extends FirelordUtils.MetaType>() => {
 	const getAfter = <U extends GetPath<T['ancestors']>>(
 		path: NoEmptyDocId<U> extends true
 			? U
@@ -54,6 +46,7 @@ export const getAfterCreator = <T extends FirelordUtils.MetaType>() => {
 	): T['read'] => {
 		return {} as T['read']
 	}
-	return { getAfter }
+	return { exists, get, getAfter, match: matchCreator<T>() }
 }
+
 /* eslint-enable @typescript-eslint/no-unused-vars */

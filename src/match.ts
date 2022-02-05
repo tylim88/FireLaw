@@ -1,8 +1,8 @@
-import { Allow, Operations } from 'allow'
-import { ArrayOf } from 'utils'
+import { Allow, Operations } from './allow'
+import { ArrayOf } from './utils'
 import { FirelordUtils } from 'firelord'
-import { Request } from 'request'
-import { Resource } from 'resource'
+import { Request } from './request'
+import { Resource } from './resource'
 
 export type MatchPaths<
 	T extends FirelordUtils.MetaType['ancestors'],
@@ -18,6 +18,7 @@ export type MatchPaths<
 				: never}`
 		: never
 	: ''
+
 export type MatchParams<
 	T extends string,
 	U extends string = never
@@ -30,7 +31,7 @@ export type MatchParams<
 	: U
 
 export type NoEmptyDocId<T extends string> =
-	T extends `${string}/{${infer P}_${infer Q}}/${infer Rest}`
+	T extends `${string}/{${infer P}_${number}}/${infer Rest}`
 		? P extends ''
 			? 'Error: Empty DocId'
 			: NoEmptyDocId<Rest>
@@ -38,11 +39,11 @@ export type NoEmptyDocId<T extends string> =
 		? P extends ''
 			? 'Error: Empty DocId'
 			: NoEmptyDocId<Rest>
-		: T extends `${string}/{${infer P}_${infer Q}}`
+		: T extends `${string}/{${infer P}_${number}}`
 		? P extends ''
 			? 'Error: Empty DocId'
 			: true
-		: T extends `${string}/${infer P}_${infer Q}`
+		: T extends `${string}/${infer P}_${number}`
 		? P extends ''
 			? 'Error: Empty DocId'
 			: true
