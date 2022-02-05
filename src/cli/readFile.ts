@@ -4,7 +4,7 @@ import glob from 'glob'
 export const readFile = (args: string[]) => {
 	return args.reduce<string[]>((acc, path) => {
 		const dataArr: string[] = []
-		const files = glob.sync(path)
+		const files = glob.sync(path, { nodir: true })
 		files.forEach(file => {
 			const data = fs.readFileSync(file, 'utf8')
 			dataArr.push(data)

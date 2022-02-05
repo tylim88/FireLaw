@@ -3,6 +3,8 @@
 /.github
 /node_modules
 /src
+/coverage
+/husky
 
 # ignore file
 .gitignore
@@ -10,7 +12,10 @@
 
 # config file
 jest.config.js
-tsconfig.json    
+tsconfig.json
+.eslintrc.js
+.prettierrc.js
+babel.config.js    
 
 # types
 /types/**/*
@@ -21,3 +26,5 @@ tsconfig.json
 # misc
 CHANGELOG.md
 package-lock.json
+firestore.rules
+firelaw.json
