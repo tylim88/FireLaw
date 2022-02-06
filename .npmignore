@@ -4,7 +4,7 @@
 /node_modules
 /src
 /coverage
-/husky
+/.husky
 
 # ignore file
 .gitignore
@@ -22,6 +22,7 @@ babel.config.js
 !/types/**/*.ts
 **/*.test.d.ts
 **/*.test.js
+**/*.tgz
 
 # misc
 CHANGELOG.md

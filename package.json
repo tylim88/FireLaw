@@ -1,24 +1,25 @@
 {
 	"name": "firelaw",
-	"version": "0.0.0",
+	"version": "0.0.0-beta.1",
 	"description": "🔥 Write truly safe and scalable Firestore Rules in Typescript",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"bin": {
-		"firelaw": "./dist/cli/index.js"
+		"firelaw": "./dist/index.js"
 	},
 	"scripts": {
 		"reinstall": "rm -rf node_modules/ && rm -rf package-lock.json && npm i && npm link",
+		"link": "npm r firelaw -g && npm link",
 		"tsc": "tsc -p tsconfig.json",
 		"lint": "eslint . --ext .ts",
 		"prettier": "npx pretty-quick --staged",
-		"build": "rm -rf dist && rm -rf types && babel src --out-dir dist --extensions \".ts\" && npm link  ",
+		"build": "rm -rf dist && rm -rf types && babel src --out-dir dist --extensions \".ts\" && cp src/cli/settings.js dist/cli/settings.js && npm run link  ",
 		"test": "jest --coverage --silent",
 		"dev": "cross-env NODE_ENV=dev npm run build",
 		"pub": "cross-env NODE_ENV=prod npm run build && npm run tsc && npm publish",
 		"pre-commit": "npm run tsc && npm run lint --fix && npm run prettier",
 		"prepare": "husky install",
-		"pile": "ts-node src/cli/index.ts"
+		"pile": "ts-node src/cli/babel.ts"
 	},
 	"repository": {
 		"type": "git",
@@ -59,6 +60,7 @@
 		"husky": "^7.0.0",
 		"jest": "^27.2.5",
 		"jsdoc": "^3.6.5",
+		"json-stringify-pretty-compact": "^3.0.0",
 		"prettier": "^2.4.1",
 		"ts-essentials": "^9.0.0",
 		"ts-jest": "^27.0.5",
@@ -70,7 +72,6 @@
 		"@babel/preset-env": "^7.4.3",
 		"@babel/preset-typescript": "^7.10.4",
 		"commander": "^9.0.0",
-		"esprima": "^4.0.1",
 		"firebase-admin": "^10.0.2",
 		"firelord": "^0.18.0-beta.1",
 		"glob": "^7.2.0",

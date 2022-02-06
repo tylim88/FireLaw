@@ -1,12 +1,10 @@
 #!/usr/bin/env node
 // https://x-team.com/blog/a-guide-to-creating-a-nodejs-command/
 
-import { readFile } from './readFile'
+import { getFilenames } from './getFilenames'
 import { readConfigFile, config } from './readConfigFile'
 import { Command } from 'commander'
 import { writeFile } from './writeFile'
-
-const program = new Command()
 
 export const main = (str: { project: string }) => {
 	let config: config = {
@@ -23,7 +21,7 @@ export const main = (str: { project: string }) => {
 	let codeToParse: string[] = []
 	if (!error) {
 		try {
-			codeToParse = readFile(config.include)
+			codeToParse = getFilenames(config.include)
 		} catch (err) {
 			error = true
 			console.error(err)
@@ -40,11 +38,15 @@ export const main = (str: { project: string }) => {
 	return error as unknown as void
 }
 
-program
-	.name('FireLaw')
-	.description('Write truly safe and scalable Firestore Rules in Typescript')
-	.version('0.0.0')
-	.option('-p, --project [value]', 'custom config location')
-	.action(main)
+export const cli = () => {
+	const program = new Command()
 
-program.parse()
+	program
+		.name('FireLaw')
+		.description('Write truly safe and scalable Firestore Rules in Typescript')
+		.version('0.0.0')
+		.option('-p, --project [value]', 'custom config location')
+		.action(main)
+
+	program.parse()
+}

@@ -1,5 +1,5 @@
-# FireRule
+# FireLaw
 
-Transpiler that allow you to write type safe and scalable Firestore Rules in Typescript
+🔥 Write truly safe and scalable Firestore Rules in Typescript
 
 _in development_

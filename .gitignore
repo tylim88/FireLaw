@@ -3,3 +3,4 @@
 /types
 /coverage
 firestore.rules
+**/*.tgz
