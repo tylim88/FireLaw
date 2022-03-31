@@ -27,9 +27,10 @@ export const main = (str: { project: string }) => {
 			console.error(err)
 		}
 	}
+
 	if (!error) {
 		try {
-			writeFile(codeToParse, config.dist)
+			writeFile(codeToParse, config.dist) // convert code here
 		} catch (err) {
 			error = true
 			console.error(err)

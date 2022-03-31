@@ -1,20 +1,15 @@
-import 'jest'
 import { matchCreator } from './match'
-import { FirelordUtils } from 'firelord'
+import { MetaTypeCreator } from 'firelordjs'
 import { allow } from './allow'
 
-export type parent = FirelordUtils.ReadWriteCreator<
-	{ test: boolean },
-	'colName',
-	string
->
-export type child = FirelordUtils.ReadWriteCreator<
+export type parent = MetaTypeCreator<{ test: boolean }, 'colName', string>
+export type child = MetaTypeCreator<
 	{ test: boolean },
 	'colName1',
 	string,
 	parent
 >
-export type grandChild = FirelordUtils.ReadWriteCreator<
+export type grandChild = MetaTypeCreator<
 	{ test: boolean },
 	'colName2',
 	'name1' | 'name2',

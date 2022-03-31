@@ -2,7 +2,7 @@ import * as babel_ from '@babel/core'
 import path from 'path'
 import { File } from '@babel/types'
 
-export const babel = (filenames: string[]) => {
+export const getAst = (filenames: string[]) => {
 	return filenames.reduce<File[]>((acc, filename) => {
 		const dataArr: File[] = []
 		const data = babel_.transformFileSync(filename, {

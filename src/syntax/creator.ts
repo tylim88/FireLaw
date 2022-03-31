@@ -1,5 +1,5 @@
-import { ArrayOf } from './utils'
-import { FirelordUtils } from 'firelord'
+import { ArrayOf } from '../utils'
+import { MetaType } from 'firelordjs'
 import { matchCreator } from './match'
 
 export type NoEmptyDocId<T extends string> =
@@ -13,18 +13,18 @@ export type NoEmptyDocId<T extends string> =
 			: true
 		: 'Error: Incorrect Type'
 
-type GetPath<T extends FirelordUtils.MetaType['ancestors']> = T extends [
+type GetPath<T extends MetaType['ancestors']> = T extends [
 	infer X,
 	...infer Rest
 ]
-	? X extends ArrayOf<FirelordUtils.MetaType['ancestors']>
-		? `/${X['colName']}/${X['docID']}${Rest extends FirelordUtils.MetaType['ancestors']
+	? X extends ArrayOf<MetaType['ancestors']>
+		? `/${X['collectionID']}/${X['docID']}${Rest extends MetaType['ancestors']
 				? GetPath<Rest>
 				: never}`
 		: never
 	: ''
 /* eslint-disable @typescript-eslint/no-unused-vars */
-export const creator = <T extends FirelordUtils.MetaType>() => {
+export const creator = <T extends MetaType>() => {
 	const exists = <U extends GetPath<T['ancestors']>>(
 		path: NoEmptyDocId<U> extends true
 			? U

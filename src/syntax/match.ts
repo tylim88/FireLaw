@@ -1,19 +1,19 @@
 import { Allow, Operations } from './allow'
-import { ArrayOf } from './utils'
-import { FirelordUtils } from 'firelord'
+import { ArrayOf } from '../utils'
+import { MetaType } from 'firelordjs'
 import { Request } from './request'
 import { Resource } from './resource'
 
 export type MatchPaths<
-	T extends FirelordUtils.MetaType['ancestors'],
+	T extends MetaType['ancestors'],
 	Y extends unknown[] = []
 > = T extends [infer X, ...infer Rest]
-	? X extends ArrayOf<FirelordUtils.MetaType['ancestors']>
-		? `/${X['colName']}/${
+	? X extends ArrayOf<MetaType['ancestors']>
+		? `/${X['collectionID']}/${
 				| `{${string}_${Y['length']}}`
 				| (string extends X['docID']
 						? never
-						: `${X['docID']}_${Y['length']}`)}${Rest extends FirelordUtils.MetaType['ancestors']
+						: `${X['docID']}_${Y['length']}`)}${Rest extends MetaType['ancestors']
 				? MatchPaths<Rest, [1, ...Y]>
 				: never}`
 		: never
@@ -49,7 +49,7 @@ export type NoEmptyDocId<T extends string> =
 			: true
 		: 'Error: Incorrect Type'
 /* eslint-disable @typescript-eslint/no-unused-vars */
-export const matchCreator = <T extends FirelordUtils.MetaType>() => {
+export const matchCreator = <T extends MetaType>() => {
 	const match = <
 		U extends MatchPaths<T['ancestors']>,
 		//eslint-disable-next-line @typescript-eslint/no-explicit-any

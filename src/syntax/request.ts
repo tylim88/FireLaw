@@ -1,7 +1,7 @@
-import { FirelordUtils } from 'firelord'
+import { MetaType, ServerTimestamp } from 'firelordjs'
 import { Resource } from './resource'
 
-export type Request<T extends FirelordUtils.MetaType['write']> = {
+export type Request<T extends MetaType['write']> = {
 	auth?: {
 		uid: string
 		token: {
@@ -33,5 +33,5 @@ export type Request<T extends FirelordUtils.MetaType['write']> = {
 	}
 	resource: Resource<T>
 	query: { limit: number; offset: number; orderBy: keyof T }
-	time: FirelordUtils.ServerTimestampMasked
+	time: ServerTimestamp
 }

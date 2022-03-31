@@ -5,4 +5,5 @@ module.exports = {
 		'^.+\\.(ts)$': 'ts-jest',
 	},
 	moduleDirectories: ['node_modules', 'src'],
+	collectCoverage: true,
 }
