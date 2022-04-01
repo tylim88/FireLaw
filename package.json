@@ -12,10 +12,9 @@
 		"link": "npm link && npm link firelaw",
 		"tsc": "tsc",
 		"lint": "eslint . --ext .ts",
-		"prettier": "pretty-quick --staged",
+		"pretty-quick": "pretty-quick --stage",
 		"build": "rm -rf dist && rm -rf types && cross-env NODE_ENV=prod babel src --out-dir dist --extensions \".ts\" && cp src/cli/settings.js dist/cli/settings.js ",
 		"test": "jest",
-		"pre-commit": "npm run tsc && npm run lint --fix && npm run prettier",
 		"pile": "ts-node src/cli/babel.ts",
 		"dev": "---------------------dev------------------------",
 		"d-link": "npm run build && npm run link",
@@ -70,7 +69,7 @@
 		"ts-essentials": "^9.0.0",
 		"ts-jest": "^27.0.5",
 		"ts-node": "^10.4.0",
-		"typescript": "^4.5.5"
+		"typescript": "^4.6.3"
 	},
 	"dependencies": {
 		"@babel/core": "^7.4.3",

@@ -1,4 +1,4 @@
-import { Allow, Operations } from './allow'
+import { allow } from './allow'
 import { ArrayOf } from '../utils'
 import { MetaType } from 'firelordjs'
 import { Request } from './request'
@@ -53,7 +53,7 @@ export const matchCreator = <T extends MetaType>() => {
 	const match = <
 		U extends MatchPaths<T['ancestors']>,
 		//eslint-disable-next-line @typescript-eslint/no-explicit-any
-		V extends Allow<Operations[]> // maximum 7 operations
+		V extends ReturnType<typeof allow>[] // maximum 7 operations
 	>(
 		path: NoEmptyDocId<U> extends true
 			? U

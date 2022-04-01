@@ -1,60 +1,46 @@
-import 'jest'
-import { allow } from './allow'
+import { allow, iF } from './allow'
 
-describe('test allow arguments types', () => {
-	it('unique operations', () => {
-		expect(() => allow(true, 'read', 'write')).not.toThrow()
+describe('test allow type', () => {
+	test('test positive case', () => {
+		allow(['read'], iF(true))
+		allow(['write'], iF(true))
+		allow(['read', 'write'], iF(true))
+		allow(['get', 'write'], iF(true))
+		allow(['read', 'write'], iF(true))
+		allow(['get', 'list', 'create', 'delete', 'update'], iF(true))
 	})
-	it('duplicate operations', () => {
-		// @ts-expect-error
-		expect(() => allow(true, 'read', 'write', 'read')).not.toThrow()
-	})
-	it('empty argument', () => {
-		// @ts-expect-error
-		expect(() => allow()).not.toThrow()
-	})
-	it('only boolean argument', () => {
-		// @ts-expect-error
-		expect(() => allow(true)).not.toThrow()
-	})
-	it('only one operations arguments', () => {
-		// @ts-expect-error
-		expect(() => allow('read')).not.toThrow()
-	})
-	it('only two operations arguments', () => {
-		// @ts-expect-error
-		expect(() => allow('read', 'write')).not.toThrow()
-	})
-	it('chain unique operations', () => {
-		expect(() =>
-			allow(true, 'update', 'delete')
-				.allow(false, 'list')
-				.allow(false, 'create')
-		).not.toThrow()
-	})
-	it('chain duplicate operations', () => {
-		expect(() =>
-			allow(true, 'update', 'delete')
-				.allow(false, 'list')
-				// @ts-expect-error
-				.allow(false, 'delete')
-				// @ts-expect-error
-				.allow(true, 'update')
-		).not.toThrow()
-	})
-	it('write and granular read operations', () => {
-		expect(() => allow(true, 'write', 'list').allow(true, 'get')).not.toThrow()
-		expect(() =>
+
+	test('negative case', () => {
+		allow(
 			// @ts-expect-error
-			allow(true, 'write', 'list').allow(true, 'get', 'list')
-		).not.toThrow()
-	})
-	it('write and granular write operations', () => {
-		// @ts-expect-error
-		expect(() => allow(true, 'write', 'update')).not.toThrow()
-		expect(() =>
-			// @ts-expect-error
-			allow(true, 'update').allow(true, 'list', 'write')
-		).not.toThrow()
+			[],
+			iF(true)
+		)
+		allow(
+			[
+				'read',
+				// @ts-expect-error
+				'read',
+			],
+			iF(true)
+		)
+		allow(
+			[
+				'read',
+				// @ts-expect-error
+				'update',
+				'write',
+			],
+			iF(true)
+		)
+		allow(
+			[
+				'read',
+				// @ts-expect-error
+				'list',
+				'write',
+			],
+			iF(true)
+		)
 	})
 })
