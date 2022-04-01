@@ -13,7 +13,7 @@
 		"tsc": "tsc",
 		"lint": "eslint . --ext .ts",
 		"pretty-quick": "pretty-quick --stage",
-		"build": "rm -rf dist && rm -rf types && cross-env NODE_ENV=prod babel src --out-dir dist --extensions \".ts\" && cp src/cli/settings.js dist/cli/settings.js ",
+		"build": "rm -rf dist && rm -rf types && cross-env NODE_ENV=prod babel src --out-dir dist --extensions \".ts\" && cp src/transpiler/settings.js dist/transpiler/settings.js ",
 		"test": "jest",
 		"pile": "ts-node src/cli/babel.ts",
 		"dev": "---------------------dev------------------------",
