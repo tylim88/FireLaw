@@ -7,4 +7,3 @@ npm run tsc
 npm run build 
 # npm run d-test
 # npm run d-e-test
-# npm run d-p-test

@@ -8,7 +8,7 @@
 		"firelaw": "./dist/index.js"
 	},
 	"scripts": {
-		"reinstall": "rm -rf node_modules/ && rm -rf package-lock.json && npm i",
+		"reinstall": "rm -rf node_modules/ && rm package-lock.json && npm i",
 		"link": "npm link && npm link firelaw",
 		"tsc": "tsc",
 		"lint": "eslint . --ext .ts",
@@ -76,6 +76,7 @@
 		"@babel/preset-env": "^7.4.3",
 		"@babel/preset-typescript": "^7.10.4",
 		"commander": "^9.0.0",
+		"esbuild": "^0.14.34",
 		"firelordjs": "^1.0.11",
 		"glob": "^7.2.0",
 		"zod": "^3.11.6"
