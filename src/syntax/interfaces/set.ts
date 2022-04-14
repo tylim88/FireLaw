@@ -1,4 +1,3 @@
-import { List } from './list'
 export type Set<T> = {
 	/**
 	 * Check if value v exists in set(array) x.
@@ -8,7 +7,7 @@ export type Set<T> = {
 		list(['a','b']).toSet().in('a') === true
 	 * ```
 	 */
-	in: (value: T extends null ? never : T) => boolean
+	in: (value: Set<T>) => boolean
 	/**
      * ```md 
      * Returns a set that is the difference between the set calling difference() and the set passed to difference(). That is, returns a set containing the elements in the comparison set that are not in the specified set.
@@ -20,7 +19,7 @@ export type Set<T> = {
         list(['a','b']).toSet().difference(list(['a','c']).toSet()) === list(['b']).toSet()
         ```
      */
-	difference: (set: T extends null ? never : Set<T>) => Set<T>
+	difference: (set: Set<T>) => Set<T>
 	/**
 	 * Determine whether the set contains all elements in another set.
 	 * @param set The set of elements to look for.
@@ -30,7 +29,7 @@ export type Set<T> = {
             list(['d','e']).toSet().hasAll(['d','e','f']) === true
         ```
 	 */
-	hasAll: (set: T extends null ? never : T[] | List<T> | Set<T>) => boolean
+	hasAll: (set: T[] | Set<T>) => boolean
 	/**
 	 * Test whether the set calling hasAll() contains all of the items in the comparison set passed to hasAll().
 	 * @param set The set of elements to look for.
@@ -40,7 +39,7 @@ export type Set<T> = {
         list(['a','b']).toSet().hasAny(list(['a','c']).toSet()) === true
        ```
 	 */
-	hasAny: (set: T extends null ? never : T[] | List<T> | Set<T>) => boolean
+	hasAny: (set: T[] | Set<T>) => boolean
 	/**
 	 * Test whether the set calling hasOnly() contains only the items in the comparison set or list passed to hasOnly().
 	 * @param set The set of elements to look for.
@@ -50,7 +49,7 @@ export type Set<T> = {
         list(['a','b']).toSet().hasOnly(['a','b']) === true
 	 * ```
 	 */
-	hasOnly: (set: T extends null ? never : T[] | List<T> | Set<T>) => boolean
+	hasOnly: (set: T[] | Set<T>) => boolean
 
 	/**
      * ```md
@@ -63,7 +62,7 @@ export type Set<T> = {
        list(['a','b']).toSet().intersection(list(['a','c']).toSet()) === list(['a']).toSet()
        ```
      */
-	intersection: (set: T extends null ? never : Set<T>) => Set<T>
+	intersection: (set: Set<T>) => Set<T>
 	/**
 	 * Get the number of values in the set.
 	 * @returns the number of values in the set.
@@ -78,5 +77,5 @@ export type Set<T> = {
        list(['a','b']).toSet().union(list(['a','c']).toSet()) === list(['a', 'b', 'c']).toSet()
        ```
      */
-	union: (set: T extends null ? never : Set<T>) => Set<T>
+	union: (set: Set<T>) => Set<T>
 }

@@ -23,7 +23,7 @@ export const b = (value: string) => {
 			b('€').size() === 3 // 3-byte UTF-8 encoded string
 		 * ```
 		 */
-		size: () => {
+		size: (): number => {
 			return 0
 		},
 		/**
@@ -32,7 +32,7 @@ export const b = (value: string) => {
 		 * b('\xFB\xEF\xBE').toBase64() === '----'
 		 * ```
 		 */
-		toBase64: () => {
+		toBase64: (): string => {
 			return value
 		},
 		/**
@@ -44,7 +44,7 @@ export const b = (value: string) => {
 			b('€').toHexString() === 'E282AC'
 			```
 		 */
-		toHexString: () => {
+		toHexString: (): string => {
 			return value
 		},
 	}

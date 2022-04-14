@@ -4,3 +4,4 @@
 /coverage
 firestore.rules
 **/*.tgz
+**/*.log

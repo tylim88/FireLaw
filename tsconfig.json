@@ -12,6 +12,7 @@
 		"allowJs": true,
 		"baseUrl": "src",
 		"emitDeclarationOnly": true,
+		"resolveJsonModule": true,
 		"outDir": "dist",
 		"paths": {
 			"*": ["./*"]
@@ -19,8 +20,5 @@
 		"typeRoots": ["./node_modules/@types"],
 		"plugins": [{ "transform": "transformer-module" }]
 	},
-	"include": ["src/**/*"],
-	"ts-node": {
-		"require": ["tsconfig-paths/register"]
-	}
+	"include": ["src/**/*"]
 }
