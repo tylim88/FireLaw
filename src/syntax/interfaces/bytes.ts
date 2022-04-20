@@ -16,7 +16,8 @@
 export const b = (value: string) => {
 	return {
 		/**
-		 * @returns number of bytes in a Bytes sequence.
+		 * Returns the number of bytes in a Bytes sequence.
+		 * @returns non-null rules.Integer the number of bytes.
 		 * ```ts
 			b('\xFF\xFF').size() === 2
 			b('a').size() === 1
@@ -26,8 +27,14 @@ export const b = (value: string) => {
 		size: (): number => {
 			return 0
 		},
+
 		/**
-		 * @returns number of bytes in a Bytes sequence.
+		 * ```md
+		 * Returns the Base64-encoded string corresponding to the provided Bytes sequence.
+
+		Base64 encoding is performed per the base64url specification.
+		 ```
+		 * @returns non-null rules.String a Base64-encoded string.
 		 * ```ts
 		 * b('\xFB\xEF\xBE').toBase64() === '----'
 		 * ```
@@ -35,9 +42,10 @@ export const b = (value: string) => {
 		toBase64: (): string => {
 			return value
 		},
+
 		/**
-		 *
-		 * @returns hexadecimal-encoded string corresponding to the provided Bytes sequence.
+		 * Returns the hexadecimal-encoded string corresponding to the provided Bytes sequence.
+		 * @returns non-null rules.String a hexadecimal-encoded string.
 		 * ```ts
 			b('\x2A').toHexString() === '2A'
 			b('**').toHexString() === '2A2A'
