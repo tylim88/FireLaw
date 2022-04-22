@@ -14,8 +14,11 @@
 ```
 */
 export const b = (value: string) => {
-	return {
-		/**
+	return 1 as unknown as Byte
+}
+
+export type Byte = {
+	/**
 		 * Returns the number of bytes in a Bytes sequence.
 		 * @returns non-null rules.Integer the number of bytes.
 		 * ```ts
@@ -24,11 +27,9 @@ export const b = (value: string) => {
 			b('€').size() === 3 // 3-byte UTF-8 encoded string
 		 * ```
 		 */
-		size: (): number => {
-			return 0
-		},
+	size: () => number
 
-		/**
+	/**
 		 * ```md
 		 * Returns the Base64-encoded string corresponding to the provided Bytes sequence.
 
@@ -39,11 +40,9 @@ export const b = (value: string) => {
 		 * b('\xFB\xEF\xBE').toBase64() === '----'
 		 * ```
 		 */
-		toBase64: (): string => {
-			return value
-		},
+	toBase64: () => string
 
-		/**
+	/**
 		 * Returns the hexadecimal-encoded string corresponding to the provided Bytes sequence.
 		 * @returns non-null rules.String a hexadecimal-encoded string.
 		 * ```ts
@@ -52,9 +51,6 @@ export const b = (value: string) => {
 			b('€').toHexString() === 'E282AC'
 			```
 		 */
-		toHexString: (): string => {
-			return value
-		},
-	}
+	toHexString: () => string
 }
 /* eslint-enable @typescript-eslint/no-unused-vars */
