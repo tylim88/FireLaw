@@ -3,10 +3,11 @@ import { MapDiff } from './mapDiff'
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 export const map = <T extends Record<string, unknown>>(value: T) => {
-	//
+	return 1 as unknown as Map<T>
 }
 
 /* eslint-enable @typescript-eslint/no-unused-vars */
+
 export type Map<T extends Record<string, unknown>> = {
 	/**
 	 * Check if key k exists in map x
@@ -20,7 +21,7 @@ export type Map<T extends Record<string, unknown>> = {
 
 	/**
 	 * Return a rules.MapDiff representing the result of comparing the current Map to a comparison Map.
-	 * @param map_to_compare A Map to which the current (calling) Map will be compared.
+	 * @param map_to_compare rules.Map. A Map to which the current (calling) Map will be compared.
 	 * @returns rules.MapDiff object representing the result of the comparison.
 	 */
 	diff: (map_to_compare: Map<T>) => MapDiff<T>
@@ -34,20 +35,20 @@ export type Map<T extends Record<string, unknown>> = {
 		The function requires a default value to return if no match to the given search key is found.
 		```
 		@param key (non-null rules.String or non-null rules.List) Either a key specified as a string, or for nested Maps, a sub-key specified using list syntax.
-		@param key Value to return if the Map does not contain the given search key. Can be any Rules language type.
+		@param default_value Value to return if the Map does not contain the given search key. Can be any Rules language type.
 		@returns value Value corresponding to the given key, or the default return value specified by default_value if no match to the given key is found. Since Map contents are user-defined, the data type of the returned value can be any Rules language type.
 	```ts
-	// "c" is not a key in the supplied Map, returns default value 7.
-	map({"a": 3,"b": 2}).get("c", 7) == 7
+		// "c" is not a key in the supplied Map, returns default value 7.
+		map({"a": 3,"b": 2}).get("c", 7) == 7
 
-	// Default result can be any type, e.g. a list such as [1, 1].
-	map({"a": [2, 7], "b": [9, 12]}).get("c", [1, 1]) === [1, 1]
+		// Default result can be any type, e.g. a list such as [1, 1].
+		map({"a": [2, 7], "b": [9, 12]}).get("c", [1, 1]) === [1, 1]
 
-	// Return a list on a successful match.
-	map({"a": [2, 7],"b": [9, 12]}).get("b", [1, 1]) === [9, 12]
+		// Return a list on a successful match.
+		map({"a": [2, 7],"b": [9, 12]}).get("b", [1, 1]) === [9, 12]
 
-	// For nested Maps, use list ["a", "b"] to specify lookup on sub-key "b".
-	map({"a": {"b": 1},"c": 2}).get(["a", "b"], 7) === 1
+		// For nested Maps, use list ["a", "b"] to specify lookup on sub-key "b".
+		map({"a": {"b": 1},"c": 2}).get(["a", "b"], 7) === 1
 	```
 	 */
 	get: <U extends string[]>(

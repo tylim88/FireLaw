@@ -14,28 +14,28 @@ interface Array<T> {
 
 		/**
 		 * Create a new list by adding the elements of another list to the end of this list.
-		 * @param list rules.List to concatenate. Value must not be null.
+		 * @param list rules.List. List to concatenate. Value must not be null.
 		 * @returns non-null rules.List the list with all elements of the other list added.
 		 */
 		concat: <U>(list: U[]) => Array<T | U>
 
 		/**
 		 * Determine whether the list contains all elements in another list.
-		 * @param list The rules.List of elements to look for. Value must not be null.
+		 * @param list rules.List. The list of elements to look for. Value must not be null.
 		 * @returns non-null rules.Boolean true if this list contains all elements in the other.
 		 */
 		hasAll: (list: T[]) => boolean
 
 		/**
 		 * Determine whether the list contains any element in another list.
-		 * @param list The rules.List of elements to look for. Value must not be null.
+		 * @param list rules.List. The list of elements to look for. Value must not be null.
 		 * @returns non-null rules.Boolean true if this list contains any element in the other.
 		 */
 		hasAny: (list: T[]) => boolean
 
 		/**
 	 * Determine whether all elements in the list are present in another list.
-	 * @param list The rules.List of elements to look for. Value must not be null.
+	 * @param list rules.List. The list of elements to look for. Value must not be null.
 	 * @returns non-null rules.Boolean true if all elements in the list are present in another list, excluding repeated elements.
 	 * ```ts
 		['a', 'b'].FSR.hasOnly(['a', 'c']) === false
@@ -49,7 +49,7 @@ interface Array<T> {
 
 		/**
 		 * Join the elements in the list into a string, with a separator.
-		 * @param separator rules.String to separate elements. Value must not be null.
+		 * @param separator rules.String. String to separate elements. Value must not be null.
 		 * @returns non-null rules.String the list joined as a string.
 		 */
 		join: (separator: string) => string

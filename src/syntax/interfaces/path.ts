@@ -1,19 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-export const path = <T extends string>(path: T) => {
-	return {
-		/**
-		 * Bind key-value pairs in a map to a path.
-		 * @param map rules.Map to bind. Values must not be null.
-         * ```ts
-          // Make the path '/path/something/another' by binding a map
-            path("somePath/$(foo)/$(bar)").bind({foo: "something", bar: "another"})
-         * ```
-		 */
-		bind: (map: Record<GetKeys<T>, string>): void => {
-			//
-		},
-	}
+/**
+ * Directory-like pattern for the location of a resource.
+ * @param path string
+ * @returns
+ */
+export const path = <T extends string>(path: T): Path<T> => {
+	return 1 as unknown as Path<T>
 }
+
 /* eslint-enable @typescript-eslint/no-unused-vars */
 
 type GetKeys<T extends string> = T extends `${infer P}/${infer R}`
@@ -23,3 +17,17 @@ type GetKeys<T extends string> = T extends `${infer P}/${infer R}`
 	: T extends `$(${infer S})`
 	? S
 	: never
+
+export type Path<T extends string> = {
+	/**
+			 * Bind key-value pairs in a map to a path.
+			 * @param map rules.Map. A Map to bind. Values must not be null.
+			 * ```ts
+			  // Make the path '/path/something/another' by binding a map
+				path("somePath/$(foo)/$(bar)").bind({foo: "something", bar: "another"})
+			 * ```
+			 */
+	bind: (map: Record<GetKeys<T>, string>) => void
+} & Record<GetKeys<T>, string>
+
+// ! need to handle numeric index

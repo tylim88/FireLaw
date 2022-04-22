@@ -1,8 +1,7 @@
 import { allow } from './allow'
 import { ArrayOf } from '../utils'
 import { MetaType } from 'firelordjs'
-import { Request } from './request'
-import { Resource } from './resource'
+import { Request, Resource } from './interfaces'
 
 export type MatchPaths<
 	T extends MetaType['ancestors'],
@@ -62,8 +61,8 @@ export const matchCreator = <T extends MetaType>() => {
 			  >}`,
 		recursiveWildcard: 'none' | '**' | '***',
 		callback: (
-			request: Request<T['write']>,
-			resource: Resource<T['read']>,
+			request: Request<T>,
+			resource: Resource<T, 'read'>,
 			params: { [index in MatchParams<U>]: index }
 		) => V
 	) => {

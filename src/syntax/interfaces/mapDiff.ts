@@ -25,7 +25,7 @@ export type MapDiff<T extends Record<string, unknown>> = {
 
 	/**
 	 * Returns a rules.Set, which lists any keys that have been added to, removed from or modified from the Map calling diff() compared to the Map passed to diff(). This function returns the set equivalent to the combined results of MapDiff.addedKeys(), MapDiff.removedKeys() and MapDiff.changedKeys().
-	 * @returns non-null rules.Set ,a list of keys added to, removed from or changed from the rules.Map passed to the Map.diff() function.
+	 * @returns non-null rules.Set, a list of keys added to, removed from or changed from the rules.Map passed to the Map.diff() function.
 	 * ```ts
 	 * map({"a":0, "c":0, "u":0}).diff({"r":0, "c":1, "u": 0}).affectedKeys() === list(["a", "r", "c"]).toSet()
 	 * ```
