@@ -1,10 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+type Database = 'database'
 /**
  * Directory-like pattern for the location of a resource.
  * @param path string
  * @returns
  */
-export const path = <T extends string>(path: T): Path<T> => {
+export const path = <T extends `/databases/$(${Database})/documents/${string}`>(
+	path: T
+): Path<T> => {
 	return 1 as unknown as Path<T>
 }
 
@@ -27,7 +30,7 @@ export type Path<T extends string> = {
 				path("somePath/$(foo)/$(bar)").bind({foo: "something", bar: "another"})
 			 * ```
 			 */
-	bind: (map: Record<GetKeys<T>, string>) => void
-} & Record<GetKeys<T>, string>
+	bind: (map: Omit<Record<GetKeys<T>, string>, Database>) => void
+} & Omit<Record<GetKeys<T>, string>, Database>
 
 // ! need to handle numeric index
