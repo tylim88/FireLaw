@@ -1,4 +1,4 @@
-import { LatLng } from '../interfaces/latlng'
+import { LatLng } from '../interfaces'
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /**
  * Globally available latitude-longitude functions. These functions are accessed using the latlng. prefix.
@@ -17,4 +17,3 @@ export const latlng = {
 		return 1 as unknown as LatLng
 	},
 }
-/* eslint-enable @typescript-eslint/no-unused-vars */

@@ -92,4 +92,3 @@ math.sqrt(2.25) == 1.5
 	 */
 	sqrt: (num: number) => num,
 }
-/* eslint-enable @typescript-eslint/no-unused-vars */

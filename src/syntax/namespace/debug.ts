@@ -32,4 +32,3 @@ bool_value: true      // for the outermost enclosing debug() call
 export const debug = <T>(arg: T): T => {
 	return 1 as unknown as T
 }
-/* eslint-enable @typescript-eslint/no-unused-vars */

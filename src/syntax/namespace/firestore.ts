@@ -1,5 +1,4 @@
-import { Path } from '../interfaces/path'
-import { Resource } from '../interfaces/resource'
+import { Resource, Path } from '../interfaces'
 import { MetaType } from 'firelordjs'
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -50,5 +49,3 @@ export type Firestore<T extends MetaType> = {
 	 */
 	getAfter: (path: Path<T['docPath']>) => Resource<T, 'read'> | null
 }
-
-/* eslint-enable @typescript-eslint/no-unused-vars */

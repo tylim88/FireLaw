@@ -1,4 +1,3 @@
-import { Byte } from '../interfaces/bytes'
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /**
  * Compute a hash using the CRC32 algorithm.
@@ -35,4 +34,3 @@ export const md5 = (bytes_or_string: string | Byte) => {
 export const sha256 = (bytes_or_string: string | Byte) => {
 	return 1 as unknown as Byte
 }
-/* eslint-enable @typescript-eslint/no-unused-vars */

@@ -1,6 +1,9 @@
-export const duration = 1 as unknown as Duration
+import { IsInteger } from '../../utils'
+import { Duration } from '../interfaces'
 
-type Duration = {
+export const duration = 1 as unknown as DurationN
+
+type DurationN = {
 	/**
 	 * Absolute value of a duration.
 	 * @param duration rules.Duration. Duration value. Value must not be null.
@@ -56,7 +59,3 @@ ns	    Nanoseconds
 		unit: 'w' | 'd' | 'h' | 'm' | 's' | 'ms' | 'ns'
 	) => Duration
 }
-
-type IsInteger<T extends number> = `${T}` extends `${number}.${number}`
-	? 'Integer Only'
-	: T

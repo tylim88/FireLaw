@@ -48,5 +48,3 @@ export const creator = <T extends MetaType>() => {
 	}
 	return { exists, get, getAfter, match: matchCreator<T>() }
 }
-
-/* eslint-enable @typescript-eslint/no-unused-vars */

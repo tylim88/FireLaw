@@ -42,7 +42,7 @@
 			&nbsp;
 			<a href="https://github.com/tylim88/firelaw/actions" target="_blank">
 				<img
-					src="https://github.com/tylim88/firelaw/actions/workflows/github-actions.yml/badge.svg"
+					src="https://github.com/tylim88/firelaw/workflows/Main/badge.svg"
 					alt="github action"
 				/>
 			</a>

@@ -11,8 +11,6 @@ export const path = <T extends `/databases/$(${Database})/documents/${string}`>(
 	return 1 as unknown as Path<T>
 }
 
-/* eslint-enable @typescript-eslint/no-unused-vars */
-
 type GetKeys<T extends string> = T extends `${infer P}/${infer R}`
 	? P extends `$(${infer S})`
 		? S | GetKeys<R>

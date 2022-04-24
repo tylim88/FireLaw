@@ -11,4 +11,3 @@
 export const int = (value: string | number): number => {
 	return 1
 }
-/* eslint-enable @typescript-eslint/no-unused-vars */

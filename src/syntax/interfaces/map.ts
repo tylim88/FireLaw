@@ -6,8 +6,6 @@ export const map = <T extends Record<string, unknown>>(value: T) => {
 	return 1 as unknown as Map<T>
 }
 
-/* eslint-enable @typescript-eslint/no-unused-vars */
-
 export type Map<T extends Record<string, unknown>> = {
 	/**
 	 * Check if key k exists in map x

@@ -172,4 +172,3 @@ describe('test match types', () => {
 		).not.toThrow()
 	})
 })
-/* eslint-enable @typescript-eslint/no-unused-vars */

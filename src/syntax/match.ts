@@ -70,4 +70,3 @@ export const matchCreator = <T extends MetaType>() => {
 	}
 	return { match }
 }
-/* eslint-enable @typescript-eslint/no-unused-vars */

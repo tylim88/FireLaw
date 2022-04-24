@@ -10,4 +10,3 @@
 export const bool = (value: string): boolean => {
 	return true
 }
-/* eslint-enable @typescript-eslint/no-unused-vars */

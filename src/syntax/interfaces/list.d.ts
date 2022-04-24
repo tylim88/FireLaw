@@ -1,16 +1,40 @@
-/* eslint-enable @typescript-eslint/no-unused-vars */
-
 interface Array<T> {
+	/**
+	 *```md
+		List type. Items are not necessarily homogenous.
+
+		In addition to the methods listed below, lists have the following operators:
+
+		Operator	Usage
+		x == y	Compare lists x and y
+		x[i]	Index operator, get value index i
+	 ```
+	 */
 	FSR: {
 		/**
-	 * Check if value v exists in list(array) x.
-	 * @param value The element to look for in list.
-	 * @returns true if this list contains the element.
-	 * ```ts
-		['a','b'].FSR.in('a') === true
-	 * ```
-	 */
+		 * Check if value v exists in list(array) x.
+		 * @param value The element to look for in list.
+		 * @returns true if this list contains the element.
+		 * ```ts
+			['a','b'].FSR.in('a') === true
+		* ```
+		*/
 		in: (value: T) => boolean
+
+		/**
+		 * range operator
+		 * @param start rules.Integer. Start index
+		 * @param end rules.Integer. End Index
+		 * @returns rules.List
+         * ```ts
+            // Check if the list starts with ['a','b','c']
+            mystring.FSR.range(0,3) === ['a','b','c']
+            ```
+		 */
+		range: <S extends number, E extends number>(
+			start: IsInteger<S>,
+			end: IsInteger<E>
+		) => Array<T>
 
 		/**
 		 * Create a new list by adding the elements of another list to the end of this list.
