@@ -62,7 +62,7 @@ export type Map<T extends Record<string, unknown>> = {
 	 * Get the list of keys in the map.
 	 * @returns non-null rules.List list of keys.
 	 */
-	keys: () => Array<keyof T>
+	keys: () => (keyof T)[]
 
 	/**
 	 * Get the number of entries in the map.

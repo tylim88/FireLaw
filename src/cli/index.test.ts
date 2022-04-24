@@ -1,5 +1,5 @@
 import 'jest'
-import { main, cli } from './index'
+import { main } from './index'
 
 describe('test cli', () => {
 	// ! this throw in ci, why
