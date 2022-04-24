@@ -51,7 +51,7 @@ export type NoEmptyDocId<T extends string> =
 export const matchCreator = <T extends MetaType>() => {
 	const match = <
 		U extends MatchPaths<T['ancestors']>,
-		//eslint-disable-next-line @typescript-eslint/no-explicit-any
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		V extends ReturnType<typeof allow>[] // maximum 7 operations
 	>(
 		path: NoEmptyDocId<U> extends true

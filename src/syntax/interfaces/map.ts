@@ -33,7 +33,7 @@ export type Map<T extends Record<string, unknown>> = {
 		The function requires a default value to return if no match to the given search key is found.
 		```
 		@param key (non-null rules.String or non-null rules.List) Either a key specified as a string, or for nested Maps, a sub-key specified using list syntax.
-		@param default_value Value to return if the Map does not contain the given search key. Can be any Rules language type.
+		@param default_value Value to return if the Map does not contain the given search key.
 		@returns value Value corresponding to the given key, or the default return value specified by default_value if no match to the given key is found. Since Map contents are user-defined, the data type of the returned value can be any Rules language type.
 	```ts
 		// "c" is not a key in the supplied Map, returns default value 7.
