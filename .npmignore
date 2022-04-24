@@ -5,10 +5,17 @@
 /src
 /coverage
 /.husky
+/.config
+/.parcel-cache
+/codeForDoc
+/.opensource
+/.husky
+/scripts
 
 # ignore file
 .gitignore
 .npmignore
+note.txt
 
 # config file
 jest.config.js
@@ -16,6 +23,11 @@ tsconfig.json
 .eslintrc.js
 .prettierrc.js
 babel.config.js    
+.env
+jest.config.doc.js
+tsconfig.doc.json
+lgtm.yml
+tsconfig.prod.json
 
 # types
 /types/**/*
@@ -23,9 +35,9 @@ babel.config.js
 **/*.test.d.ts
 **/*.test.js
 **/*.tgz
+**/*.log
 
 # misc
 CHANGELOG.md
 package-lock.json
-firestore.rules
-firelaw.json
+firebase.json
