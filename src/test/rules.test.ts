@@ -43,7 +43,6 @@ describe('test whether works with rules-unit-testing', () => {
 	})
 	it('test basic operation like setDoc, updateDoc, addDoc, deleteDoc etc etc', async () => {
 		const ref = userRef.doc('user1')
-		expect(__dirname).toBe('')
 		await setDoc(ref, { a: { b: 30 } }, { merge: true })
 		// some other operations
 		// do your assertion here...

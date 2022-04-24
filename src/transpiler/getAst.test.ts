@@ -3,6 +3,7 @@ import 'jest'
 
 describe('test read config file', () => {
 	it('test correct path', () => {
+		expect(__dirname).toBe('')
 		expect(() =>
 			getAst([
 				'src/transpiler/dummyDoc/abc.ts',
