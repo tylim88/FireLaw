@@ -3,7 +3,7 @@ import { main, cli } from './index'
 
 describe('test cli', () => {
 	it('test cli', () => {
-		expect(cli).not.toThrow()
+		expect(() => cli()).not.toThrow()
 	})
 	it('test main ok', () => {
 		expect(main({ project: 'firelaw.json' })).toBe(undefined)
