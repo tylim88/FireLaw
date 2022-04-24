@@ -8,14 +8,14 @@
 		"firelaw": "./dist/src/index.js"
 	},
 	"scripts": {
-		"reinstall": "rm -rf node_modules/ && rm package-lock.json -rf && npm i",
+		"reinstall": "rm -rf node_modules && rm -rf package-lock.json && npm i && npx husky install",
 		"tsc": "tsc",
-		"lint": "eslint . --ext .ts",
+		"lint": "eslint . --ext .ts --fix",
 		"pretty-quick": "pretty-quick --stage",
-		"link": "npm link && npm link firelaw",
-		"test": "firebase emulators:exec --only firestore \"jest\"",
-		"build": "rm -rf dist && rm -rf types && cross-env NODE_ENV=prod babel src --out-dir dist --extensions \".ts\" && cp src/transpiler/settings.js dist/transpiler/settings.js ",
-		"run": "ts-node src/cli/babel.ts",
+		"test": "firebase emulators:exec --only firestore \"rm -rf coverage && jest --forceExit\"",
+		"parcel": "rm -rf dist && tsc --emitDeclarationOnly true && parcel build",
+		"build": "rm -rf dist && tsc && cp settings.js dist/settings.js",
+		"link": "npm link && npm link firelordjs",
 		"dev": "---------------------dev------------------------",
 		"d-link": "npm run build && npm run link",
 		"d-test": "tsc && npm test",
@@ -27,7 +27,7 @@
 		"b-test": "firebase emulators:exec --only firestore \"jest --forceExit -c=jest.config.doc.js\"",
 		"b-uninstall": "npm --prefix codeForDoc run uninstall",
 		"published": "-------------test published file-----------------------",
-		"p-reinstall": "npm --prefix codeForDoc run reinstall",
+		"p-reinstall": "npm --prefix codeForDoc run reinstall && ts-node --project tsconfig.doc.json scripts/installLatest.ts",
 		"p-test": "npm --prefix codeForDoc test"
 	},
 	"repository": {

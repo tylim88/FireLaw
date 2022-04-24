@@ -11,11 +11,11 @@ export const main = (str: { project: string }) => {
 		include: [],
 		dist: '',
 	}
-	let error = false
+	let error: undefined | string = undefined
 	try {
 		config = readConfigFile(str.project)
 	} catch (err) {
-		error = true
+		error = JSON.stringify(err)
 		console.error(err)
 	}
 	let codeToParse: string[] = []
@@ -23,7 +23,7 @@ export const main = (str: { project: string }) => {
 		try {
 			codeToParse = getFilenames(config.include)
 		} catch (err) {
-			error = true
+			error = JSON.stringify(err)
 			console.error(err)
 		}
 	}
@@ -32,7 +32,7 @@ export const main = (str: { project: string }) => {
 		try {
 			writeFile(codeToParse, config.dist) // convert code here
 		} catch (err) {
-			error = true
+			error = JSON.stringify(err)
 			console.error(err)
 		}
 	}

@@ -9,7 +9,7 @@ export type config = z.infer<typeof config>
 export const readConfigFile = (path?: string) => {
 	const data: config = JSON.parse(
 		fs.readFileSync(
-			pathR.resolve(__dirname, path || 'firelaw.json')
+			pathR.resolve(process.cwd(), path || 'firelaw.json')
 		) as unknown as string
 	)
 

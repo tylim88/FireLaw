@@ -25,7 +25,7 @@ describe('test whether works with rules-unit-testing', () => {
 				host: 'localhost',
 				port,
 				rules: fs.readFileSync(
-					path.resolve(__dirname, '../../firestore.rules'),
+					path.resolve(process.cwd(), 'firestore.rules'),
 					'utf8'
 				),
 			},

@@ -7,7 +7,7 @@ export const getAst = (filenames: string[]) => {
 		const dataArr: File[] = []
 		const data = babel_.transformFileSync(filename, {
 			ast: true,
-			configFile: path.resolve(__dirname, 'settings.js'),
+			configFile: path.resolve(process.cwd(), 'settings.js'),
 			filename: 'file.ts', // [BABEL] unknown: Preset /* your preset */ requires a filename to be set when babel is called directly,
 		})
 		if (data?.ast) {

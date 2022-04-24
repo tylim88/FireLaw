@@ -1,4 +1,4 @@
 {
 	"include": ["src/cli/**/*"],
-	"dist": "firestore1.rules"
+	"dist": "writeTest.rules"
 }
