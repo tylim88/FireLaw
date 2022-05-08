@@ -1,5 +1,0 @@
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-  src/cli/getFilenames.test.ts,src/cli/getFilenames.ts,src/cli/index.test.ts,src/cli/index.ts,src/cli/readConfigFile.test.ts,src/cli/readConfigFile.ts,src/cli/writeFile.ts
-  }

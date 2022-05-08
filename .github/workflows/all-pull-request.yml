@@ -4,11 +4,6 @@ jobs:
   build_test:
     runs-on: ubuntu-latest
     steps:
-      - name: Cache firebase emulators
-        uses: actions/cache@v2
-        with:
-          path: /home/runner/.cache/firebase/emulators
-          key: ${{ runner.os }}-firebase-emulators-${{ hashFiles('/home/runner/.cache/firebase/emulators') }}
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v2
         with:

@@ -1,6 +1,6 @@
 {
 	"name": "firelaw",
-	"version": "0.0.0-beta.1",
+	"version": "0.0.0-beta.3",
 	"description": "🔥Write truly safe and scalable Firestore Rules, Transpile Typescript to Security Rules!",
 	"main": "./dist/src/index.js",
 	"types": "./dist/src/index.d.ts",
@@ -14,8 +14,10 @@
 		"pretty-quick": "pretty-quick --stage",
 		"test": "firebase emulators:exec --only firestore \"rm -rf coverage && jest --forceExit\"",
 		"parcel": "rm -rf dist && tsc --emitDeclarationOnly true && parcel build",
-		"build": "rm -rf dist && tsc && cp settings.js dist/settings.js",
+		"build": "rm -rf dist && tsc && cp src/astBabel/settings.js dist/src/astBabel/settings.js",
 		"link": "npm link && npm link firelordjs",
+		"q-test": "jest src/astBabel/getAst.test.ts",
+		"q-node": "ts-node src/astTypescript/getAst.ts",
 		"dev": "---------------------dev------------------------",
 		"d-link": "npm run build && npm run link",
 		"d-test": "tsc && npm test",
@@ -86,7 +88,7 @@
 		"firelordjs": "^1.1.11",
 		"glob": "^8.0.1",
 		"typescript": "^4.6.3",
-		"zod": "^3.14.4"
+		"zod": "^3.15.1"
 	},
 	"peerDependencies": {
 		"firebase": "^9.6.6"

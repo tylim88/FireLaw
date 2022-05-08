@@ -1,4 +1,3 @@
-import 'jest'
 import { main } from './index'
 
 describe('test cli', () => {
@@ -6,10 +5,10 @@ describe('test cli', () => {
 	// it('test cli', () => {
 	// 	expect(cli).not.toThrow()
 	// })
-	it('test main ok', () => {
-		expect(main({ project: 'firelaw.json' })).toBe(undefined)
+	it('test main ok', async () => {
+		await expect(main({ project: 'firelaw.json' })).resolves.toBeUndefined()
 	})
-	it('test main error', () => {
-		expect(typeof main({ project: 'firelaw1.json' })).toBe('string')
+	it('test main error', async () => {
+		await expect(main({ project: 'firela1w.json' })).rejects.toBeTruthy()
 	})
 })

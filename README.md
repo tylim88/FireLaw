@@ -69,23 +69,20 @@
 			</a>
 			&nbsp;
 			<a
-				href="https://lgtm.com/projects/g/tylim88/firelaw/alerts/"
+				href="https://lgtm.com/projects/g/tylim88/FireLaw/alerts/"
 				target="_blank"
 			>
 				<img
 					alt="Total alerts"
-					src="https://img.shields.io/lgtm/alerts/g/tylim88/firelaw.svg?logo=lgtm&logoWidth=18"
+					src="https://img.shields.io/lgtm/alerts/g/tylim88/FireLaw.svg?logo=lgtm&logoWidth=18"
 				/>
 			</a>
 			&nbsp;
-			<a
-				href="https://lgtm.com/projects/g/tylim88/firelaw/context:javascript"
-				target="_blank"
-			>
+			<a href="https://lgtm.com/projects/g/tylim88/FireLaw/context:javascript">
 				<img
-					alt="Language grade: JavaScript"
-					src="https://img.shields.io/lgtm/grade/javascript/g/tylim88/firelaw.svg?logo=lgtm&logoWidth=18"
-				/>
+					target="_blank"
+					alt="Language grade: JavaScript" 
+					src="https://img.shields.io/lgtm/grade/javascript/g/tylim88/FireLaw.svg?logo=lgtm&logoWidth=18"/>
 			</a>
 </div>
 

@@ -1,4 +1,4 @@
 {
-	"include": ["src/cli/**/*"],
-	"dist": "writeTest.rules"
+	"entryPoint": "src/testFiles/abc.ts",
+	"dist": "src/testFiles/writeTest.rules"
 }
