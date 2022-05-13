@@ -1,42 +1,24 @@
 #!/usr/bin/env node
 // https://x-team.com/blog/a-guide-to-creating-a-nodejs-command/
 
-import { getFilenames } from './getFilenames'
 import { readConfigFile, config } from './readConfigFile'
 import { Command } from 'commander'
 import { writeFile } from './writeFile'
+import { bundler } from '../bundler'
 
-export const main = (str: { project: string }) => {
+export const main = async (str: { project: string }) => {
 	let config: config = {
-		include: [],
+		entryPoint: '',
 		dist: '',
 	}
-	let error = false
-	try {
-		config = readConfigFile(str.project)
-	} catch (err) {
-		error = true
-		console.error(err)
-	}
-	let codeToParse: string[] = []
-	if (!error) {
-		try {
-			codeToParse = getFilenames(config.include)
-		} catch (err) {
-			error = true
-			console.error(err)
-		}
-	}
 
-	if (!error) {
-		try {
-			writeFile(codeToParse, config.dist) // convert code here
-		} catch (err) {
-			error = true
-			console.error(err)
-		}
-	}
-	return error as unknown as void
+	config = readConfigFile(str.project)
+
+	const codeToParse = await bundler(config.entryPoint) // bundle code, also throw on syntax error
+
+	// TODO transpile
+
+	writeFile([codeToParse], config.dist) // convert code here
 }
 
 export const cli = () => {

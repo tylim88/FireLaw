@@ -1,18 +1,16 @@
 import 'jest'
 import { readConfigFile } from './readConfigFile'
+import config from '../../firelaw.json'
 
 describe('test read config file', () => {
 	it('test correct path and correct output', () => {
-		expect(readConfigFile('src/cli/dummyConfig/firelaw.json')).toEqual({
-			include: ['src/cli/**/*'],
-			dist: 'firestore.rules',
-		})
+		expect(readConfigFile('firelaw.json')).toEqual(config)
 	})
 	it('test incorrect path', () => {
-		expect(() => readConfigFile('src/cli/firelaw.json')).toThrow()
+		expect(() => readConfigFile('firelaw1.json')).toThrow()
 	})
 	it('test incorrect content', () => {
-		expect(() => readConfigFile('src/cli/firelaw.json')).not.toEqual({
+		expect(() => readConfigFile('firelaw.json')).not.toEqual({
 			include: ['a1bc.txt'],
 			dist: 'firestore.rules',
 		})

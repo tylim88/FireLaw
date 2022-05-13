@@ -4,23 +4,15 @@
 		"module": "CommonJS",
 		"declaration": true,
 		"esModuleInterop": true,
-		"sourceMap": true,
+		"sourceMap": false,
 		"noImplicitAny": true,
 		"forceConsistentCasingInFileNames": true,
 		"strict": true,
 		"target": "esNext",
 		"allowJs": true,
-		"baseUrl": "src",
-		"emitDeclarationOnly": true,
-		"outDir": "dist",
-		"paths": {
-			"*": ["./*"]
-		},
-		"typeRoots": ["./node_modules/@types"],
-		"plugins": [{ "transform": "transformer-module" }]
+		"emitDeclarationOnly": false,
+		"resolveJsonModule": true,
+		"outDir": "dist"
 	},
-	"include": ["src/**/*"],
-	"ts-node": {
-		"require": ["tsconfig-paths/register"]
-	}
+	"include": ["src/**/*"]
 }

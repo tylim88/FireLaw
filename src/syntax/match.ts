@@ -1,8 +1,7 @@
-import { Allow, Operations } from './allow'
+import { allow } from './allow'
 import { ArrayOf } from '../utils'
 import { MetaType } from 'firelordjs'
-import { Request } from './request'
-import { Resource } from './resource'
+import { Request, Resource } from './interfaces'
 
 export type MatchPaths<
 	T extends MetaType['ancestors'],
@@ -52,8 +51,8 @@ export type NoEmptyDocId<T extends string> =
 export const matchCreator = <T extends MetaType>() => {
 	const match = <
 		U extends MatchPaths<T['ancestors']>,
-		//eslint-disable-next-line @typescript-eslint/no-explicit-any
-		V extends Allow<Operations[]> // maximum 7 operations
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		V extends ReturnType<typeof allow>[] // maximum 7 operations
 	>(
 		path: NoEmptyDocId<U> extends true
 			? U
@@ -62,8 +61,8 @@ export const matchCreator = <T extends MetaType>() => {
 			  >}`,
 		recursiveWildcard: 'none' | '**' | '***',
 		callback: (
-			request: Request<T['write']>,
-			resource: Resource<T['read']>,
+			request: Request<T>,
+			resource: Resource<T, 'read'>,
 			params: { [index in MatchParams<U>]: index }
 		) => V
 	) => {
@@ -71,4 +70,3 @@ export const matchCreator = <T extends MetaType>() => {
 	}
 	return { match }
 }
-/* eslint-enable @typescript-eslint/no-unused-vars */

@@ -1,0 +1,4 @@
+kill firestore emulator
+https://stackoverflow.com/a/63514410/5338829
+netstat -ano|findstr "PID :8080"
+taskkill /pid FOUNDPID /F

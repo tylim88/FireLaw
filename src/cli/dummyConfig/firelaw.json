@@ -1,4 +1,0 @@
-{
-	"include": ["src/cli/**/*"],
-	"dist": "firestore.rules"
-}

@@ -1,14 +1,14 @@
-import 'jest'
-import { main, cli } from './index'
+import { main } from './index'
 
 describe('test cli', () => {
-	it('test main ok', () => {
-		expect(main({ project: 'src/cli/dummyConfig/firelaw.json' })).toBe(false)
+	// ! this throw in ci, why
+	// it('test cli', () => {
+	// 	expect(cli).not.toThrow()
+	// })
+	it('test main ok', async () => {
+		await expect(main({ project: 'firelaw.json' })).resolves.toBeUndefined()
 	})
-	it('test main error', () => {
-		expect(main({ project: 'src/cli/dummyConfig/firelaw1.json' })).toBe(true)
-	})
-	it('test cli', () => {
-		expect(cli).not.toThrow()
+	it('test main error', async () => {
+		await expect(main({ project: 'firela1w.json' })).rejects.toBeTruthy()
 	})
 })

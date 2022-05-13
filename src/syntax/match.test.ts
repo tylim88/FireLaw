@@ -1,6 +1,6 @@
 import { matchCreator } from './match'
 import { MetaTypeCreator } from 'firelordjs'
-import { allow } from './allow'
+import { allow, iF } from './allow'
 
 export type parent = MetaTypeCreator<{ test: boolean }, 'colName', string>
 export type child = MetaTypeCreator<
@@ -26,7 +26,7 @@ describe('test match types', () => {
 					const { abc_0 } = params
 					// @ts-expect-error
 					const { abc_1 } = params
-					return allow(true, 'read').allow(true, 'write')
+					return [allow(['read'], iF(true)), allow(['write'], iF(true))]
 				}
 			)
 		).not.toThrow()
@@ -41,7 +41,7 @@ describe('test match types', () => {
 					const { abc_1 } = params
 					// @ts-expect-error
 					const { efg_2 } = params
-					return allow(true, 'read')
+					return [allow(['read'], iF(true))]
 				}
 			)
 		).not.toThrow()
@@ -58,7 +58,7 @@ describe('test match types', () => {
 					// @ts-expect-error
 					const { efg_2 } = params
 
-					return allow(true, 'read')
+					return [allow(['read'], iF(true))]
 				}
 			)
 		).not.toThrow()
@@ -77,7 +77,7 @@ describe('test match types', () => {
 					// @ts-expect-error
 					const { name2_2 } = params
 
-					return allow(true, 'read')
+					return [allow(['read'], iF(true))]
 				}
 			)
 		).not.toThrow()
@@ -106,7 +106,7 @@ describe('test match types', () => {
 					const { abc_1 } = params
 					// @ts-expect-error
 					const { efg_1 } = params
-					return allow(true, 'read')
+					return [allow(['read'], iF(true))]
 				}
 			)
 		).not.toThrow()
@@ -121,7 +121,7 @@ describe('test match types', () => {
 					const { abc_1 } = params
 					// @ts-expect-error
 					const { efg_2 } = params
-					return allow(true, 'read')
+					return [allow(['read'], iF(true))]
 				}
 			)
 		).not.toThrow()
@@ -133,7 +133,7 @@ describe('test match types', () => {
 				'/colName/{_0}',
 				'none',
 				(request, resource, params) => {
-					return allow(true, 'read')
+					return [allow(['read'], iF(true))]
 				}
 			)
 		).not.toThrow()
@@ -144,7 +144,7 @@ describe('test match types', () => {
 				'/colName/{abc_0}/colName1/{_1}',
 				'none',
 				(request, resource, params) => {
-					return allow(true, 'read')
+					return [allow(['read'], iF(true))]
 				}
 			)
 		).not.toThrow()
@@ -155,7 +155,7 @@ describe('test match types', () => {
 				'/colName/{abc_0}/colName1/{efg_1}/colName2/{_2}',
 				'none',
 				(request, resource, params) => {
-					return allow(true, 'read')
+					return [allow(['read'], iF(true))]
 				}
 			)
 		).not.toThrow()
@@ -166,10 +166,9 @@ describe('test match types', () => {
 				'/colName/{abc_0}/colName1/{efg_1}/colName2/_2',
 				'none',
 				(request, resource, params) => {
-					return allow(true, 'read')
+					return [allow(['read'], iF(true))]
 				}
 			)
 		).not.toThrow()
 	})
 })
-/* eslint-enable @typescript-eslint/no-unused-vars */

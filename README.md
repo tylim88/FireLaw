@@ -42,7 +42,7 @@
 			&nbsp;
 			<a href="https://github.com/tylim88/firelaw/actions" target="_blank">
 				<img
-					src="https://github.com/tylim88/firelaw/actions/workflows/github-actions.yml/badge.svg"
+					src="https://github.com/tylim88/firelaw/workflows/Main/badge.svg"
 					alt="github action"
 				/>
 			</a>
@@ -69,24 +69,31 @@
 			</a>
 			&nbsp;
 			<a
-				href="https://lgtm.com/projects/g/tylim88/firelaw/alerts/"
+				href="https://lgtm.com/projects/g/tylim88/FireLaw/alerts/"
 				target="_blank"
 			>
 				<img
 					alt="Total alerts"
-					src="https://img.shields.io/lgtm/alerts/g/tylim88/firelaw.svg?logo=lgtm&logoWidth=18"
+					src="https://img.shields.io/lgtm/alerts/g/tylim88/FireLaw.svg?logo=lgtm&logoWidth=18"
 				/>
 			</a>
 			&nbsp;
-			<a
-				href="https://lgtm.com/projects/g/tylim88/firelaw/context:javascript"
-				target="_blank"
-			>
+			<a href="https://lgtm.com/projects/g/tylim88/FireLaw/context:javascript">
 				<img
-					alt="Language grade: JavaScript"
-					src="https://img.shields.io/lgtm/grade/javascript/g/tylim88/firelaw.svg?logo=lgtm&logoWidth=18"
-				/>
+					target="_blank"
+					alt="Language grade: JavaScript" 
+					src="https://img.shields.io/lgtm/grade/javascript/g/tylim88/FireLaw.svg?logo=lgtm&logoWidth=18"/>
 			</a>
 </div>
 
-_in development_
+I decided to stop working on this project after I found out that the security rule methods does not support nested object well enough, too much limitation.
+
+Hence it is pointless to continue this project, it will provide too less value.
+
+With Firestore security rule, You should be ok with read operation, but not write operation.
+
+My advice is to validate your data in cloud function instead, and enjoy good library like yup, joi and zod.
+
+You lose optimistic update in front end, but I think that is acceptable.
+
+TLDR, Firestore security rule suck.
