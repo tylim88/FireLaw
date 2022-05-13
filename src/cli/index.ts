@@ -14,7 +14,7 @@ export const main = async (str: { project: string }) => {
 
 	config = readConfigFile(str.project)
 
-	const codeToParse = await bundler(config.entryPoint)
+	const codeToParse = await bundler(config.entryPoint) // bundle code, also throw on syntax error
 
 	// TODO transpile
 
