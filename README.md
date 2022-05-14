@@ -88,12 +88,12 @@
 
 I decided to stop working on this project after I found out that the security rule methods does not support nested object well enough, too much limitation.
 
-Hence it is pointless to continue this project, it will provide too less value.
+Hence it is pointless to continue this project, there is no enough value.
 
-With Firestore security rule, You should be ok with read operation, but not write operation.
+You should be ok with read operations, because read rule is quite simple, but this is not the case with write operations.
 
-My advice is to validate your data in cloud function instead, and enjoy good library like yup, joi and zod.
+My advice is to validate your data in cloud function instead, and enjoy good libraries like yup, joi and zod.
 
 You lose optimistic update in front end, but I think that is acceptable.
 
-TLDR, Firestore security rule suck.
+TLDR, Firestore security rule suck, don't use it with nested object.
