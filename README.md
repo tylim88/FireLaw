@@ -86,14 +86,18 @@
 			</a>
 </div>
 
-I decided to stop working on this project after I found out that the security rule methods does not support nested object well enough, too much limitation.
+I decided to stop working on this project after I found out that the security rule methods does not support nested object well enough, the language has too much limitation.
 
 Hence it is pointless to continue this project, there is no enough value.
 
 You should be ok with read operations, because read rule is quite simple, but this is not the case with write operations.
 
-My advice is to validate your data in cloud function instead, and enjoy good libraries like yup, joi and zod.
+My advice is to validate your data in cloud function instead, and use good libraries like yup, joi and zod.
 
 You lose optimistic update in front end, but I think that is acceptable.
 
+If you don't want keep the optimistic update, use trigger instead.
+
 TLDR, Firestore security rule suck, don't use it with nested object.
+
+I may continue to work on this (will not support nested object) after I finish other projects.
