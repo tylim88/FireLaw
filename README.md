@@ -99,5 +99,3 @@ You lose optimistic update in front end, but I think that is acceptable.
 If you don't want keep the optimistic update, use trigger instead.
 
 TLDR, Firestore security rule suck, don't use it with nested object.
-
-I may continue to work on this (will not support nested object) after I finish other projects.

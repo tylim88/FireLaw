@@ -1,6 +1,6 @@
 {
 	"name": "firelaw",
-	"version": "0.0.0-beta.3",
+	"version": "0.0.0-beta.4",
 	"description": "🔥Write truly safe and scalable Firestore Rules, Transpile Typescript to Security Rules!",
 	"main": "./dist/src/index.js",
 	"types": "./dist/src/index.d.ts",
