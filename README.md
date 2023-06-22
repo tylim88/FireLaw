@@ -99,3 +99,7 @@ You lose optimistic update in front end, but I think that is acceptable.
 If you don't want keep the optimistic update, use trigger instead.
 
 TLDR, Firestore security rule suck, don't use it with nested object.
+
+## Update
+
+I will repurpose this library into VS Code extension that lint types of Firestore Security Rules based on Firelord type
